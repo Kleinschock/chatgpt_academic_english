@@ -308,3 +308,10 @@ https://github.com/GaiZhenbiao/ChuanhuChatGPT
 # 借鉴项目2：清华ChatGLM-6B：
 https://github.com/THUDM/ChatGLM-6B
 ```
+
+
+
+___
+
+
+Please translate this to english. Also note that at the top that it was translated by me :) Functioanlity inside of the program is also partially translated to english
