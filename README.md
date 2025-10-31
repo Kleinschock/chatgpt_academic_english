@@ -1,317 +1,294 @@
+Of course. Here is the complete English translation of the README.md file. I've added a note at the top as you requested and ensured the technical instructions remain accurate.
+
+***
+
 > **Note**
 >
-> 本项目依赖的Gradio组件的新版pip包(Gradio 3.26~3.27)有严重bug。所以，请在安装时严格选择requirements.txt中**指定的版本**。 
-> 
+> This document has been translated from the original Chinese README. Some functionality within the program has also been partially translated into English.
+
+> **Note**
+>
+> The new pip packages for the Gradio component that this project depends on (Gradio 3.26~3.27) have serious bugs. Therefore, please strictly select the **specified versions** in `requirements.txt` during installation.
+>
 > `pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/`
->
 
-# <img src="docs/logo.png" width="40" > ChatGPT 学术优化
+# <img src="docs/logo.png" width="40" > ChatGPT Academic Optimization
 
-**如果喜欢这个项目，请给它一个Star；如果你发明了更好用的快捷键或函数插件，欢迎发issue或者pull requests**
+**If you like this project, please give it a Star; if you have developed more useful shortcuts or function plugins, feel free to open an issue or pull request.**
 
-If you like this project, please give it a Star. If you've come up with more useful academic shortcuts or functional plugins, feel free to open an issue or pull request. We also have a README in [English|](docs/README_EN.md)[日本語|](docs/README_JP.md)[Русский|](docs/README_RS.md)[Français](docs/README_FR.md) translated by this project itself.
+We also have a README in [English|](docs/README_EN.md)[日本語|](docs/README_JP.md)[Русский|](docs/README_RS.md)[Français](docs/README_FR.md) translated by this project itself.
 
 > **Note**
 >
-> 1.请注意只有**红颜色**标识的函数插件（按钮）才支持读取文件，部分插件位于插件区的**下拉菜单**中。另外我们以**最高优先级**欢迎和处理任何新插件的PR！
+> 1. Please note that only function plugins (buttons) marked in **red** support reading files. Some plugins are located in the **dropdown menu** in the plugin area. We welcome and prioritize PRs for any new plugins!
 >
-> 2.本项目中每个文件的功能都在自译解[`self_analysis.md`](https://github.com/binary-husky/chatgpt_academic/wiki/chatgpt-academic%E9%A1%B9%E7%9B%AE%E8%87%AA%E8%AF%91%E8%A7%A3%E6%8A%A5%E5%91%8A)详细说明。随着版本的迭代，您也可以随时自行点击相关函数插件，调用GPT重新生成项目的自我解析报告。常见问题汇总在[`wiki`](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)当中。
-> 
-> 3.已支持OpenAI和API2D的api-key共存，可在配置文件中填写如`API_KEY="openai-key1,openai-key2,api2d-key3"`。需要临时更换`API_KEY`时，在输入区输入临时的`API_KEY`然后回车键提交后即可生效。
+> 2. The function of each file in this project is explained in detail in the self-analysis report [`self_analysis.md`](https://github.com/binary-husky/chatgpt_academic/wiki/chatgpt-academic%E9%A1%B9%E7%9B%AE%E8%87%AA%E8%AF%91%E8%A7%A3%E6%8A%A5%E5%91%8A). As the version iterates, you can also click the relevant function plugins at any time to have GPT regenerate the project's self-analysis report. A summary of frequently asked questions can be found in the [`wiki`](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98).
+>
+> 3. Co-existence of OpenAI and API2D API keys is now supported. You can fill them in the configuration file like `API_KEY="openai-key1,openai-key2,api2d-key3"`. To temporarily change the `API_KEY`, simply type the temporary `API_KEY` in the input box and press Enter to apply it.
 
 <div align="center">
-    
-功能 | 描述
+
+Function | Description
 --- | ---
-一键润色 | 支持一键润色、一键查找论文语法错误
-一键中英互译 | 一键中英互译
-一键代码解释 | 可以正确显示代码、解释代码
-[自定义快捷键](https://www.bilibili.com/video/BV14s4y1E7jN) | 支持自定义快捷键
-[配置代理服务器](https://www.bilibili.com/video/BV1rc411W7Dr) | 支持代理连接OpenAI/Google等，秒解锁ChatGPT互联网[实时信息聚合](https://www.bilibili.com/video/BV1om4y127ck/)能力
-模块化设计 | 支持自定义强大的[函数插件](https://github.com/binary-husky/chatgpt_academic/tree/master/crazy_functions)，插件支持[热更新](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%87%BD%E6%95%B0%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8D%97)
-[自我程序剖析](https://www.bilibili.com/video/BV1cj411A7VW) | [函数插件] [一键读懂](https://github.com/binary-husky/chatgpt_academic/wiki/chatgpt-academic%E9%A1%B9%E7%9B%AE%E8%87%AA%E8%AF%91%E8%A7%A3%E6%8A%A5%E5%91%8A)本项目的源代码
-[程序剖析](https://www.bilibili.com/video/BV1cj411A7VW) | [函数插件] 一键可以剖析其他Python/C/C++/Java/Lua/...项目树
-读论文 | [函数插件] 一键解读latex论文全文并生成摘要
-Latex全文[翻译](https://www.bilibili.com/video/BV1nk4y1Y7Js/)、[润色](https://www.bilibili.com/video/BV1FT411H7c5/) | [函数插件] 一键翻译或润色latex论文
-批量注释生成 | [函数插件] 一键批量生成函数注释
-chat分析报告生成 | [函数插件] 运行后自动生成总结汇报
-Markdown[中英互译](https://www.bilibili.com/video/BV1yo4y157jV/) | [函数插件] 看到上面5种语言的[README](https://github.com/binary-husky/chatgpt_academic/blob/master/docs/README_EN.md)了吗？
-[arxiv小助手](https://www.bilibili.com/video/BV1LM4y1279X) | [函数插件] 输入arxiv文章url即可一键翻译摘要+下载PDF
-[PDF论文全文翻译功能](https://www.bilibili.com/video/BV1KT411x7Wn) | [函数插件] PDF论文提取题目&摘要+翻译全文（多线程）
-[谷歌学术统合小助手](https://www.bilibili.com/video/BV19L411U7ia) | [函数插件] 给定任意谷歌学术搜索页面URL，让gpt帮你[写relatedworks](https://www.bilibili.com/video/BV1GP411U7Az/)
-公式/图片/表格显示 | 可以同时显示公式的[tex形式和渲染形式](https://user-images.githubusercontent.com/96192199/230598842-1d7fcddd-815d-40ee-af60-baf488a199df.png)，支持公式、代码高亮
-多线程函数插件支持 | 支持多线调用chatgpt，一键处理[海量文本](https://www.bilibili.com/video/BV1FT411H7c5/)或程序
-启动暗色gradio[主题](https://github.com/binary-husky/chatgpt_academic/issues/173) | 在浏览器url后面添加```/?__dark-theme=true```可以切换dark主题
-[多LLM模型](https://www.bilibili.com/video/BV1wT411p7yf)支持，[API2D](https://api2d.com/)接口支持 | 同时被GPT3.5、GPT4和[清华ChatGLM](https://github.com/THUDM/ChatGLM-6B)伺候的感觉一定会很不错吧？
-huggingface免科学上网[在线体验](https://huggingface.co/spaces/qingxu98/gpt-academic) | 登陆huggingface后复制[此空间](https://huggingface.co/spaces/qingxu98/gpt-academic)
-…… | ……
+One-Click Polish | Supports one-click polishing and finding grammatical errors in papers.
+One-Click Chinese-English Translation | One-click mutual translation between Chinese and English.
+One-Click Code Explanation | Correctly displays and explains code.
+[Custom Shortcuts](https://www.bilibili.com/video/BV14s4y1E7jN) | Supports custom shortcuts.
+[Configure Proxy Server](https://www.bilibili.com/video/BV1rc411W7Dr) | Supports proxy connections to OpenAI/Google, etc., instantly unlocking ChatGPT's [real-time information aggregation](https://www.bilibili.com/video/BV1om4y127ck/) capability on the internet.
+Modular Design | Supports powerful custom [function plugins](https://github.com/binary-husky/chatgpt_academic/tree/master/crazy_functions), with plugin [hot-reloading](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%87%BD%E6%95%B0%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8D%97) support.
+[Self-Program Analysis](https://www.bilibili.com/video/BV1cj411A7VW) | [Function Plugin] [One-click to understand](https://github.com/binary-husky/chatgpt_academic/wiki/chatgpt-academic%E9%A1%B9%E7%9B%AE%E8%87%AA%E8%AF%91%E8%A7%A3%E6%8A%A5%E5%91%8A) the source code of this project.
+[Program Analysis](https://www.bilibili.com/video/BV1cj411A7VW) | [Function Plugin] One-click analysis of other Python/C/C++/Java/Lua/... project trees.
+Read Papers | [Function Plugin] One-click to read the full text of a LaTeX paper and generate a summary.
+LaTeX Full-Text [Translation](https://www.bilibili.com/video/BV1nk4y1Y7Js/)/[Polishing](https://www.bilibili.com/video/BV1FT411H7c5/) | [Function Plugin] One-click translation or polishing of LaTeX papers.
+Batch Comment Generation | [Function Plugin] One-click batch generation of function comments.
+Chat Analysis Report Generation | [Function Plugin] Automatically generates a summary report after running.
+Markdown [Chinese-English Translation](https://www.bilibili.com/video/BV1yo4y157jV/) | [Function Plugin] See the [README](https://github.com/binary-husky/chatgpt_academic/blob/master/docs/README_EN.md) in 5 languages above? It was done with this.
+[Arxiv Assistant](https://www.bilibili.com/video/BV1LM4y1279X) | [Function Plugin] Input an Arxiv article URL to translate the abstract and download the PDF in one click.
+[PDF Paper Full-Text Translation](https://www.bilibili.com/video/BV1KT411x7Wn) | [Function Plugin] Extracts title & abstract from PDF papers + translates the full text (multi-threaded).
+[Google Scholar Integration Assistant](https://www.bilibili.com/video/BV19L411U7ia) | [Function Plugin] Given any Google Scholar search page URL, let GPT help you [write related works](https://www.bilibili.com/video/BV1GP411U7Az/).
+Formula/Image/Table Display | Can display formulas in both [TeX and rendered forms](https://user-images.githubusercontent.com/96192199/230598842-1d7fcddd-815d-40ee-af60-baf488a199df.png), supports formula and code highlighting.
+Multi-threaded Function Plugin Support | Supports multi-threaded calls to ChatGPT to process [massive amounts of text](https://www.bilibili.com/video/BV1FT411H7c5/) or programs with one click.
+Launch with Dark Gradio [Theme](https://github.com/binary-husky/chatgpt_academic/issues/173) | Add `/?__dark-theme=true` to the browser URL to switch to the dark theme.
+[Multi-LLM Model](https://www.bilibili.com/video/BV1wT411p7yf) Support, [API2D](https://api2d.com/) Interface Support | Being served by GPT-3.5, GPT-4, and [Tsinghua's ChatGLM](https://github.com/THUDM/ChatGLM-6B) at the same time must feel great, right?
+Hugging Face [Online Demo](https://huggingface.co/spaces/qingxu98/gpt-academic) without VPN | After logging into Hugging Face, duplicate [this space](https://huggingface.co/spaces/qingxu98/gpt-academic).
+... | ...
 
 </div>
 
-
-- 新界面（修改`config.py`中的LAYOUT选项即可实现“左右布局”和“上下布局”的切换）
+- New Interface (Switch between "Side-by-Side" and "Top-and-Bottom" layouts by modifying the LAYOUT option in `config.py`)
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/230361456-61078362-a966-4eb5-b49e-3c62ef18b860.gif" width="700" >
 </div>
 
-
-- 所有按钮都通过读取functional.py动态生成，可随意加自定义功能，解放粘贴板
+- All buttons are dynamically generated by reading `functional.py`. You can freely add custom functions, liberating your clipboard.
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/231975334-b4788e91-4887-412f-8b43-2b9c5f41d248.gif" width="700" >
 </div>
 
-- 润色/纠错
+- Polish / Proofread
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/231980294-f374bdcb-3309-4560-b424-38ef39f04ebd.gif" width="700" >
 </div>
 
-- 如果输出包含公式，会同时以tex形式和渲染形式显示，方便复制和阅读
+- If the output contains formulas, they will be displayed in both TeX and rendered formats for easy copying and reading.
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/230598842-1d7fcddd-815d-40ee-af60-baf488a199df.png" width="700" >
 </div>
 
-- 懒得看项目代码？整个工程直接给chatgpt炫嘴里
+- Too lazy to read the project code? Feed the entire project directly to ChatGPT.
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/226935232-6b6a73ce-8900-4aee-93f9-733c7e6fef53.png" width="700" >
 </div>
 
-- 多种大语言模型混合调用（ChatGLM + OpenAI-GPT3.5 + [API2D](https://api2d.com/)-GPT4）
+- Mixed calls to multiple large language models (ChatGLM + OpenAI-GPT3.5 + [API2D](https://api2d.com/)-GPT4)
 <div align="center">
 <img src="https://user-images.githubusercontent.com/96192199/232537274-deca0563-7aa6-4b5d-94a2-b7c453c47794.png" width="700" >
 </div>
 
-多种大语言模型混合调用[huggingface测试版](https://huggingface.co/spaces/qingxu98/academic-chatgpt-beta)（huggingface版不支持chatglm）
-
-
----
-
-## 安装-方法1：直接运行 (Windows, Linux or MacOS)
-
-1. 下载项目
-```sh
-git clone https://github.com/binary-husky/chatgpt_academic.git
-cd chatgpt_academic
-```
-
-2. 配置API_KEY和代理设置
-
-在`config.py`中，配置 海外Proxy 和 OpenAI API KEY，说明如下
-```
-1. 如果你在国内，需要设置海外代理才能够顺利使用OpenAI API，设置方法请仔细阅读config.py（1.修改其中的USE_PROXY为True; 2.按照说明修改其中的proxies）。
-2. 配置 OpenAI API KEY。支持任意数量的OpenAI的密钥和API2D的密钥共存/负载均衡，多个KEY用英文逗号分隔即可，例如输入 API_KEY="OpenAI密钥1,API2D密钥2,OpenAI密钥3,OpenAI密钥4"
-3. 与代理网络有关的issue（网络超时、代理不起作用）汇总到 https://github.com/binary-husky/chatgpt_academic/issues/1
-```
-（P.S. 程序运行时会优先检查是否存在名为`config_private.py`的私密配置文件，并用其中的配置覆盖`config.py`的同名配置。因此，如果您能理解我们的配置读取逻辑，我们强烈建议您在`config.py`旁边创建一个名为`config_private.py`的新配置文件，并把`config.py`中的配置转移（复制）到`config_private.py`中。`config_private.py`不受git管控，可以让您的隐私信息更加安全。）
-
-
-3. 安装依赖
-```sh
-# （选择I: 如熟悉python）推荐
-python -m pip install -r requirements.txt
-# 备注：使用官方pip源或者阿里pip源，其他pip源（如一些大学的pip）有可能出问题，临时换源方法：python -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
-
-# （选择II: 如不熟悉python）使用anaconda，步骤也是类似的：
-# （II-1）conda create -n gptac_venv python=3.11
-# （II-2）conda activate gptac_venv
-# （II-3）python -m pip install -r requirements.txt
-```
-
-如果需要支持清华ChatGLM后端，需要额外安装更多依赖（前提条件：熟悉python + 电脑配置够强）：
-```sh
-python -m pip install -r request_llm/requirements_chatglm.txt
-```
-
-4. 运行
-```sh
-python main.py
-```
-
-5. 测试函数插件
-```
-- 测试Python项目分析
-    （选择1）input区域 输入 `./crazy_functions/test_project/python/dqn` ， 然后点击 "解析整个Python项目"
-    （选择2）展开文件上传区，将python文件/包含python文件的压缩包拖拽进去，在出现反馈提示后， 然后点击 "解析整个Python项目"
-- 测试自我代码解读（本项目自译解）
-    点击 "[多线程Demo] 解析此项目本身（源码自译解）"
-- 测试函数插件模板函数（要求gpt回答历史上的今天发生了什么），您可以根据此函数为模板，实现更复杂的功能
-    点击 "[函数插件模板Demo] 历史上的今天"
-- 函数插件区下拉菜单中有更多功能可供选择
-```
-
-## 安装-方法2：使用Docker
-
-1. 仅ChatGPT（推荐大多数人选择）
-
-``` sh
-# 下载项目
-git clone https://github.com/binary-husky/chatgpt_academic.git
-cd chatgpt_academic
-# 配置 “海外Proxy”， “API_KEY” 以及 “WEB_PORT” (例如50923) 等
-用任意文本编辑器编辑 config.py
-# 安装
-docker build -t gpt-academic .
-#（最后一步-选择1）在Linux环境下，用`--net=host`更方便快捷
-docker run --rm -it --net=host gpt-academic
-#（最后一步-选择2）在macOS/windows环境下，只能用-p选项将容器上的端口(例如50923)暴露给主机上的端口
-docker run --rm -it -p 50923:50923 gpt-academic
-```
-
-2. ChatGPT+ChatGLM（需要对Docker熟悉 + 读懂Dockerfile + 电脑配置够强）
-
-``` sh
-# 修改Dockerfile
-cd docs && nano Dockerfile+ChatGLM
-# 构建 （Dockerfile+ChatGLM在docs路径下，请先cd docs）
-docker build -t gpt-academic --network=host -f Dockerfile+ChatGLM .
-# 运行 (1) 直接运行: 
-docker run --rm -it --net=host --gpus=all gpt-academic
-# 运行 (2) 我想运行之前进容器做一些调整: 
-docker run --rm -it --net=host --gpus=all gpt-academic bash
-```
-
-
-## 安装-方法3：其他部署方式（需要云服务器知识与经验）
-
-1. 远程云服务器部署
-请访问[部署wiki-1](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97)
-
-2. 使用WSL2（Windows Subsystem for Linux 子系统）
-请访问[部署wiki-2](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BD%BF%E7%94%A8WSL2%EF%BC%88Windows-Subsystem-for-Linux-%E5%AD%90%E7%B3%BB%E7%BB%9F%EF%BC%89%E9%83%A8%E7%BD%B2)
-
-3. 如何在二级网址（如`http://localhost/subpath`）下运行
-请访问[FastAPI运行说明](docs/WithFastapi.md)
-
-## 安装-代理配置
-1. 常规方法
-[配置代理](https://github.com/binary-husky/chatgpt_academic/issues/1)
-
-2. 纯新手教程
-[纯新手教程](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6%E9%97%AE%E9%A2%98%E7%9A%84%E6%96%B0%E6%89%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B9%E6%B3%95%E5%8F%AA%E9%80%82%E7%94%A8%E4%BA%8E%E6%96%B0%E6%89%8B%EF%BC%89)
-
+Mixed calls to multiple large language models [Hugging Face Beta Version](https://huggingface.co/spaces/qingxu98/academic-chatgpt-beta) (Hugging Face version does not support ChatGLM).
 
 ---
 
-## 自定义新的便捷按钮 / 自定义函数插件
+## Installation - Method 1: Direct Run (Windows, Linux or MacOS)
 
-1. 自定义新的便捷按钮（学术快捷键）
-任意文本编辑器打开`core_functional.py`，添加条目如下，然后重启程序即可。（如果按钮已经添加成功并可见，那么前缀、后缀都支持热修改，无需重启程序即可生效。）
-例如
-```
-"超级英译中": {
-    # 前缀，会被加在你的输入之前。例如，用来描述你的要求，例如翻译、解释代码、润色等等
-    "Prefix": "请翻译把下面一段内容成中文，然后用一个markdown表格逐一解释文中出现的专有名词：\n\n", 
-    
-    # 后缀，会被加在你的输入之后。例如，配合前缀可以把你的输入内容用引号圈起来。
-    "Suffix": "",
-},
-```
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/226899272-477c2134-ed71-4326-810c-29891fe4a508.png" width="500" >
-</div>
+1.  Download the project
+    ```sh
+    git clone https://github.com/binary-husky/chatgpt_academic.git
+    cd chatgpt_academic
+    ```
 
-2. 自定义函数插件
+2.  Configure API_KEY and Proxy Settings
 
-编写强大的函数插件来执行任何你想得到的和想不到的任务。
-本项目的插件编写、调试难度很低，只要您具备一定的python基础知识，就可以仿照我们提供的模板实现自己的插件功能。
-详情请参考[函数插件指南](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%87%BD%E6%95%B0%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8D%97)。
+    In `config.py`, configure your overseas Proxy and OpenAI API KEY. Instructions are as follows:
+    ```
+    1. If you are in a region with restricted access, you need to set up an overseas proxy to use the OpenAI API. Please read config.py carefully for setup instructions (1. Change USE_PROXY to True; 2. Modify the proxies according to the instructions).
+    2. Configure your OpenAI API KEY. Any number of OpenAI keys and API2D keys can coexist for load balancing. Separate multiple keys with a comma, e.g., API_KEY="OpenAI-key1,API2D-key2,OpenAI-key3,OpenAI-key4"
+    3. Issues related to proxy networks (network timeouts, proxy not working) are summarized at https://github.com/binary-husky/chatgpt_academic/issues/1
+    ```
+    (P.S. The program will first check for a private configuration file named `config_private.py` and use its settings to override the same settings in `config.py`. Therefore, if you understand our configuration logic, we strongly recommend creating a new file named `config_private.py` next to `config.py` and transferring (copying) your configurations there. `config_private.py` is ignored by git, which keeps your private information more secure.)
 
+3.  Install dependencies
+    ```sh
+    # (Option I: If you are familiar with Python) Recommended
+    python -m pip install -r requirements.txt
+    # Note: Use the official pip source or an Alibaba mirror. Other pip sources (like some university mirrors) might cause issues. To temporarily change the source: python -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+    # (Option II: If you are not familiar with Python) Use Anaconda, the steps are similar:
+    # (II-1) conda create -n gptac_venv python=3.11
+    # (II-2) conda activate gptac_venv
+    # (II-3) python -m pip install -r requirements.txt
+    ```
+
+    If you need to support the Tsinghua ChatGLM backend, you'll need to install additional dependencies (Prerequisites: familiar with Python + powerful enough computer):
+    ```sh
+    python -m pip install -r request_llm/requirements_chatglm.txt
+    ```
+
+4.  Run
+    ```sh
+    python main.py
+    ```
+
+5.  Test Function Plugins
+    ```
+    - Test Python project analysis
+        (Option 1) In the input area, type `./crazy_functions/test_project/python/dqn`, then click "Analyze Entire Python Project".
+        (Option 2) Expand the file upload area, drag and drop a Python file or a zip file containing Python files. After the feedback appears, click "Analyze Entire Python Project".
+    - Test self-code analysis (this project analyzing itself)
+        Click "[Multi-threaded Demo] Analyze this project itself (source code self-analysis)".
+    - Test the function plugin template (asks GPT what happened on this day in history). You can use this as a template to create more complex functions.
+        Click "[Function Plugin Template Demo] On This Day in History".
+    - The dropdown menu in the function plugin area has more features to choose from.
+    ```
+
+## Installation - Method 2: Using Docker
+
+1.  ChatGPT Only (Recommended for most users)
+    ```sh
+    # Download the project
+    git clone https://github.com/binary-husky/chatgpt_academic.git
+    cd chatgpt_academic
+    # Configure "Overseas Proxy", "API_KEY", and "WEB_PORT" (e.g., 50923), etc.
+    Edit config.py with any text editor
+    # Build
+    docker build -t gpt-academic .
+    # (Last step - Option 1) On Linux, using `--net=host` is more convenient
+    docker run --rm -it --net=host gpt-academic
+    # (Last step - Option 2) On macOS/Windows, you must use the -p option to expose the container's port (e.g., 50923) to the host
+    docker run --rm -it -p 50923:50923 gpt-academic
+    ```
+
+2.  ChatGPT + ChatGLM (Requires familiarity with Docker + understanding the Dockerfile + a powerful computer)
+    ```sh
+    # Modify the Dockerfile
+    cd docs && nano Dockerfile+ChatGLM
+    # Build (Dockerfile+ChatGLM is in the docs path, so `cd docs` first)
+    docker build -t gpt-academic --network=host -f Dockerfile+ChatGLM .
+    # Run (1) Directly:
+    docker run --rm -it --net=host --gpus=all gpt-academic
+    # Run (2) I want to enter the container to make some adjustments before running:
+    docker run --rm -it --net=host --gpus=all gpt-academic bash
+    ```
+
+## Installation - Method 3: Other Deployment Methods (Requires cloud server knowledge and experience)
+
+1.  Remote Cloud Server Deployment
+    Please visit [Deployment Wiki-1](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97)
+
+2.  Using WSL2 (Windows Subsystem for Linux)
+    Please visit [Deployment Wiki-2](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BD%BF%E7%94%A8WSL2%EF%BC%88Windows-Subsystem-for-Linux-%E5%AD%90%E7%B3%BB%E7%BB%9F%EF%BC%89%E9%83%A8%E7%BD%B2)
+
+3.  How to run under a subpath (e.g., `http://localhost/subpath`)
+    Please visit [FastAPI Running Instructions](docs/WithFastapi.md)
+
+## Installation - Proxy Configuration
+1.  Standard Method
+    [Configure Proxy](https://github.com/binary-husky/chatgpt_academic/issues/1)
+
+2.  Beginner's Tutorial
+    [Beginner's Tutorial](https://github.com/binary-husky/chatgpt_academic/wiki/%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6%E9%97%AE%E9%A2%98%E7%9A%84%E6%96%B0%E6%89%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B9%E6%B3%95%E5%8F%AA%E9%80%82%E7%94%A8%E4%BA%8E%E6%96%B0%E6%89%8B%EF%BC%89)
 
 ---
 
+## Customizing New Shortcut Buttons / Custom Function Plugins
 
-## 部分功能展示
+1.  Customizing New Shortcut Buttons (Academic Shortcuts)
+    Open `core_functional.py` with any text editor and add an entry as shown below, then restart the program. (If the button is already added and visible, the prefix and suffix support hot-reloading without needing a restart.)
+    For example:
+    ```python
+    "Super English-to-Chinese": {
+        # Prefix, added before your input. Used to describe your request, e.g., translate, explain code, polish, etc.
+        "Prefix": "Please translate the following content into Chinese, then use a markdown table to explain the proper nouns that appear in the text one by one:\n\n",
 
-1. 图片显示：
+        # Suffix, added after your input. For example, can be used with a prefix to wrap your input content in quotes.
+        "Suffix": "",
+    },
+    ```
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/226899272-477c2134-ed71-4326-810c-29891fe4a508.png" width="500" >
+    </div>
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/228737599-bf0a9d9c-1808-4f43-ae15-dfcc7af0f295.png" width="800" >
-</div>
+2.  Customizing Function Plugins
 
-2. 本项目的代码自译解（如果一个程序能够读懂并剖析自己）：
+    Write powerful function plugins to perform any task you can imagine. The difficulty of writing and debugging plugins for this project is very low. As long as you have basic Python knowledge, you can follow the templates we provide to implement your own plugin functions. For details, please refer to the [Function Plugin Guide](https://github.com/binary-husky/chatgpt_academic/wiki/%E5%87%BD%E6%95%B0%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8D%97).
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/226936850-c77d7183-0749-4c1c-9875-fd4891842d0c.png" width="800" >
-</div>
+---
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/226936618-9b487e4b-ab5b-4b6e-84c6-16942102e917.png" width="800" >
-</div>
+## Partial Feature Showcase
 
-3. 其他任意Python/Cpp/Java/Go/Rect/...项目剖析：
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/226935232-6b6a73ce-8900-4aee-93f9-733c7e6fef53.png" width="800" >
-</div>
+1.  Image Display:
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/228737599-bf0a9d9c-1808-4f43-ae15-dfcc7af0f295.png" width="800" >
+    </div>
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/226969067-968a27c1-1b9c-486b-8b81-ab2de8d3f88a.png" width="800" >
-</div>
+2.  Self-Analysis of this Project's Code (When a program can read and analyze itself):
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/226936850-c77d7183-0749-4c1c-9875-fd4891842d0c.png" width="800" >
+    </div>
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/226936618-9b487e4b-ab5b-4b6e-84c6-16942102e917.png" width="800" >
+    </div>
 
-4. Latex论文一键阅读理解与摘要生成
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/227504406-86ab97cd-f208-41c3-8e4a-7000e51cf980.png" width="800" >
-</div>
+3.  Analysis of Any Other Python/C++/Java/Go/React/... Project:
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/226935232-6b6a73ce-8900-4aee-93f9-733c7e6fef53.png" width="800" >
+    </div>
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/226969067-968a27c1-1b9c-486b-8b81-ab2de8d3f88a.png" width="800" >
+    </div>
 
-5. 自动报告生成
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/227503770-fe29ce2c-53fd-47b0-b0ff-93805f0c2ff4.png" height="300" >
-<img src="https://user-images.githubusercontent.com/96192199/227504617-7a497bb3-0a2a-4b50-9a8a-95ae60ea7afd.png" height="300" >
-<img src="https://user-images.githubusercontent.com/96192199/227504005-efeaefe0-b687-49d0-bf95-2d7b7e66c348.png" height="300" >
-</div>
+4.  One-Click Reading Comprehension and Summary Generation for LaTeX Papers
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/227504406-86ab97cd-f208-41c3-8e4a-7000e51cf980.png" width="800" >
+    </div>
 
-6. 模块化功能设计
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/229288270-093643c1-0018-487a-81e6-1d7809b6e90f.png" height="400" >
-<img src="https://user-images.githubusercontent.com/96192199/227504931-19955f78-45cd-4d1c-adac-e71e50957915.png" height="400" >
-</div>
+5.  Automatic Report Generation
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/227503770-fe29ce2c-53fd-47b0-b0ff-93805f0c2ff4.png" height="300" >
+    <img src="https://user-images.githubusercontent.com/96192199/227504617-7a497bb3-0a2a-4b50-9a8a-95ae60ea7afd.png" height="300" >
+    <img src="https://user-images.githubusercontent.com/96192199/227504005-efeaefe0-b687-49d0-bf95-2d7b7e66c348.png" height="300" >
+    </div>
 
+6.  Modular Function Design
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/229288270-093643c1-0018-487a-81e6-1d7809b6e90f.png" height="400" >
+    <img src="https://user-images.githubusercontent.com/96192199/227504931-19955f78-45cd-4d1c-adac-e71e50957915.png" height="400" >
+    </div>
 
-7. 源代码转译英文
+7.  Translate Source Code to English
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/229720562-fe6c3508-6142-4635-a83d-21eb3669baee.png" height="400" >
+    </div>
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/229720562-fe6c3508-6142-4635-a83d-21eb3669baee.png" height="400" >
-</div>
+8.  Online Information Aggregation from the Internet
+    <div align="center">
+    <img src="https://user-images.githubusercontent.com/96192199/233575247-fb00819e-6d1b-4bb7-bd54-1d7528f03dd9.png" width="800" >
+    <img src="https://user-images.githubusercontent.com/96192199/233779501-5ce826f0-6cca-4d59-9e5f-b4eacb8cc15f.png" width="800" >
+    </div>
 
-8. 互联网在线信息综合
+## Todo & Version Plan:
+-   version 3.3+ (todo): NewBing support
+-   version 3.2: Function plugins support more parameter interfaces (save conversation function, analyze code in any language + query any combination of LLMs simultaneously)
+-   version 3.1: Support querying multiple GPT models simultaneously! Support for api2d, support for multiple API key load balancing
+-   version 3.0: Support for ChatGLM and other small LLMs
+-   version 2.6: Refactored plugin structure, improved interactivity, added more plugins
+-   version 2.5: Self-updating, solved the problem of text being too long and token overflow when summarizing large source code projects
+-   version 2.4: (1) Added PDF full-text translation function; (2) Added function to switch the position of the input area; (3) Added vertical layout option; (4) Optimized multi-threaded function plugins.
+-   version 2.3: Enhanced multi-threaded interactivity
+-   version 2.2: Function plugins support hot-reloading
+-   version 2.1: Collapsible layout
+-   version 2.0: Introduced modular function plugins
+-   version 1.0: Basic functions
 
-<div align="center">
-<img src="https://user-images.githubusercontent.com/96192199/233575247-fb00819e-6d1b-4bb7-bd54-1d7528f03dd9.png" width="800" >
-<img src="https://user-images.githubusercontent.com/96192199/233779501-5ce826f0-6cca-4d59-9e5f-b4eacb8cc15f.png" width="800" >
+ChatGPT Academic Developer QQ Group: 734063350
 
-</div>
-
-
-
-## Todo 与 版本规划:
-- version 3.3+ (todo): NewBing支持
-- version 3.2: 函数插件支持更多参数接口 (保存对话功能, 解读任意语言代码+同时询问任意的LLM组合)
-- version 3.1: 支持同时问询多个gpt模型！支持api2d，支持多个apikey负载均衡
-- version 3.0: 对chatglm和其他小型llm的支持
-- version 2.6: 重构了插件结构，提高了交互性，加入更多插件
-- version 2.5: 自更新，解决总结大工程源代码时文本过长、token溢出的问题
-- version 2.4: (1)新增PDF全文翻译功能; (2)新增输入区切换位置的功能; (3)新增垂直布局选项; (4)多线程函数插件优化。
-- version 2.3: 增强多线程交互性
-- version 2.2: 函数插件支持热重载
-- version 2.1: 可折叠式布局
-- version 2.0: 引入模块化函数插件
-- version 1.0: 基础功能
-
-chatgpt_academic开发者QQ群：734063350
-
-## 参考与学习
-
+## References and Learning
 ```
-代码中参考了很多其他优秀项目中的设计，主要包括：
+The code references designs from many other excellent projects, mainly including:
 
-# 借鉴项目1：借鉴了ChuanhuChatGPT中诸多技巧
+# Reference Project 1: Adopted many techniques from ChuanhuChatGPT
 https://github.com/GaiZhenbiao/ChuanhuChatGPT
 
-# 借鉴项目2：清华ChatGLM-6B：
+# Reference Project 2: Tsinghua's ChatGLM-6B:
 https://github.com/THUDM/ChatGLM-6B
 ```
-
-
-
-___
-
-
-Please translate this to english. Also note that at the top that it was translated by me :) Functioanlity inside of the program is also partially translated to english
